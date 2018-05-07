@@ -21,7 +21,7 @@ class LineBotServiceTest extends TestCase
 
     public function testPushMessage()
     {
-        $this->markTestSkipped('OK!');
+        // $this->markTestSkipped('OK!');
         $response = $this->lineBotService->pushMessage('Test from laravel.');
         $this->assertEquals(200, $response->getHTTPStatus());
     }
