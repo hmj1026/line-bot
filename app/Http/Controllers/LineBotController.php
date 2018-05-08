@@ -12,11 +12,11 @@ class LineBotController extends Controller
     public function __construct(LineBotService $linebotservice)
     {
     	$this->linebotservice = $linebotservice;
+
     }
 
     public function handle(Request $request)
     {
-    	$this->linebotservice->pushMessage('Test from laravel.');
-    	dd('123');
+    	$this->linebotservice->pushMessage($request->message);
     } 
 }
