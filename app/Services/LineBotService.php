@@ -15,7 +15,7 @@ class LineBotService
 	private $lineBot;
 	private $lineUserID;
 
-	public function __contruct($lineUserID)
+	public function __construct($lineUserID)
 	{
 		$this->lineBot = app(LineBot::class);
 		$this->lineUserID = $lineUserID;
