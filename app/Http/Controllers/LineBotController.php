@@ -14,18 +14,14 @@ class LineBotController extends Controller
     	$this->linebotservice = $linebotservice;
     }
 
+    public function index()
+    {
+    	return view('welcome');
+    }
+
     public function handle(Request $request)
     {
     	$this->linebotservice->pushMessage('Test from laravel.');
     }
 
-    public function test()
-    {
-    	$this->linebotservice->pushMessage('Test from laravel.');
-    }
-
-    public function index()
-    {
-    	return view('welcome');
-    } 
 }
