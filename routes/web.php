@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 
-// Route::post('/callback', 'LineBotController@handle')->name('callback');
+Route::post('/callback', 'LineBotController@handle')->name('callback');
