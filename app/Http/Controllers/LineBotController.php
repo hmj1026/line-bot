@@ -22,5 +22,10 @@ class LineBotController extends Controller
     public function test()
     {
     	$this->linebotservice->pushMessage('Test from laravel.');
+    }
+
+    public function index()
+    {
+    	return view('welcome');
     } 
 }
