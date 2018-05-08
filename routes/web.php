@@ -15,5 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/test', 'LineBotController@test');
 Route::post('/callback', 'LineBotController@handle');
