@@ -17,6 +17,10 @@ class LineBotController extends Controller
 
     public function handle(Request $request)
     {
-    	$this->linebotservice->pushMessage($request->message);
-    } 
+    	$this->linebotservice->replyMessage($request->message);
+    	// $this->linebotservice->pushMessage($request->message);
+    }
+
+
+    
 }

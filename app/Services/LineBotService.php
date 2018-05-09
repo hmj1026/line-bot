@@ -10,6 +10,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselTemplateBuilder;
 use LINE\LINEBot\MessageBuilder;
 
+use LINE\LINEBot\Event\BaseEvent;
+
 class LineBotService
 {
 	private $lineBot;
@@ -28,6 +30,19 @@ class LineBotService
             $content = new TextMessageBuilder($content);
         }
         return $this->lineBot->pushMessage($this->lineUserID, $content);
+    }
+
+    public function replyMessage($content): Response
+    {
+        if(count($content) > 5){
+        	$content = new TextMessageBuilder($content);
+        }else{
+        	$content = new TextMessageBuilder('Yeeeeeeeeeeee');
+        }
+
+        $replyToken = $this->lineBot->getReplyToken();
+
+        return $this->lineBot->replyMessage($replyToken, $content);
     }
 
 
