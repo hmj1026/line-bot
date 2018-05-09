@@ -46,12 +46,12 @@ class LineBotService
         //     $content = $event->message->text;
         // }
 
-        $events = $request->toArray();
-        
+        $arr = $request->toArray();
+
         Log::channel('debug')->info($events);
 
-        $replyToken = $events[0]['replyToken'];
-        $content    = $events[0]['message']['text'];
+        $replyToken = $arr['events'][0]['replyToken'];
+        $content    = $arr['events'][0]['message']['text'];
 
         Log::channel('debug')->info($replyToken);
         Log::channel('debug')->info($content);
