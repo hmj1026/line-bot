@@ -36,11 +36,12 @@ class LineBotService
 
     public function replyMessage($request)
     {
-        Log::channel('debug')->info($request->toArray());
 
-        foreach ($request->events as $event) {
+        $events = $request->toArray();
 
-            Log::channel('debug')->info($event->replyToken);
+        foreach ($events as $key => $event) {
+
+            Log::channel('debug')->info($event->toArray());
 
             $replyToken = $event->replyToken;
             $content = $event->message->text;
