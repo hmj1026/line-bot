@@ -46,20 +46,20 @@ class LineBotService
         //     $content = $event->message->text;
         // }
 
-        $replyToken = $request->events[0]->replyToken;
+        $events = $request->toArray();
 
+
+        $replyToken = $events[0]['replyToken'];
+        $content    = $events[0]['message']['text'];
 
         Log::channel('debug')->info($replyToken);
-        // Log::channel('debug')->info($content);
+        Log::channel('debug')->info($content);
 
         if(count($content) > 5){
         	$content = new TextMessageBuilder($content);
         }else{
         	$content = new TextMessageBuilder('Yeeeeeeeeeeee');
         }
-
-
-        Log::channel('debug')->info($replyToken);
 
 
         return $this->lineBot->replyMessage($replyToken, $content);
