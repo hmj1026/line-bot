@@ -41,6 +41,10 @@ class LineBotService
             $content = $event->message->text;
         }
 
+        Log::channel('debug')->info($replyToken);
+        Log::channel('debug')->info($content);
+        Log::channel('debug')->info($request->events->toArray());
+
         if(count($content) > 5){
         	$content = new TextMessageBuilder($content);
         }else{
