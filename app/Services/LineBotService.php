@@ -47,7 +47,8 @@ class LineBotService
         // }
 
         $events = $request->toArray();
-
+        
+        Log::channel('debug')->info($events);
 
         $replyToken = $events[0]['replyToken'];
         $content    = $events[0]['message']['text'];
