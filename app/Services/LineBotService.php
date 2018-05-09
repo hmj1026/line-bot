@@ -48,7 +48,7 @@ class LineBotService
 
         $arr = $request->toArray();
 
-        Log::channel('debug')->info($events);
+        Log::channel('debug')->info($arr);
 
         $replyToken = $arr['events'][0]['replyToken'];
         $content    = $arr['events'][0]['message']['text'];
