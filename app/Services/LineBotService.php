@@ -40,13 +40,12 @@ class LineBotService
         	$content = new TextMessageBuilder('Yeeeeeeeeeeee');
         }
 
-        $event = new BaseEvent();
+        $event = new BaseEvent($content);
 
         $replyToken = $event->getReplyToken();
 
-
-        // return $this->lineBot->replyMessage($replyToken, $content);
-        return $this->lineBot->replyText($replyToken, $content);
+        return $this->lineBot->replyMessage($replyToken, $content);
+        // return $this->lineBot->replyText($replyToken, $content);
     }
 
 
