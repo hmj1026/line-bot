@@ -34,21 +34,21 @@ class LineBotService
         return $this->lineBot->pushMessage($this->lineUserID, $content);
     }
 
-    public function replyMessage($content): Response
+    public function replyMessage()
     {
-        Log::channel('debug')->info($content);
-        
+        // Log::channel('debug')->info();
+
         if(count($content) > 5){
         	$content = new TextMessageBuilder($content);
         }else{
         	$content = new TextMessageBuilder('Yeeeeeeeeeeee');
         }
-
+        
         $event = new BaseEvent($content);
 
         $replyToken = $event->getReplyToken();
 
-        Log::channel('debug')->info($replyToken);
+        // Log::channel('debug')->info($replyToken);
 
 
         return $this->lineBot->replyMessage($replyToken, $content);
