@@ -37,6 +37,11 @@ return [
             'driver' => 'stack',
             'channels' => ['single'],
         ],
+        'debug' => [
+            'driver' => 'single',
+            'path' => public_path('logs/laravel.log'),
+            'level' => 'debug',
+        ],
 
         'single' => [
             'driver' => 'single',

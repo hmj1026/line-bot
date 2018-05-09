@@ -12,6 +12,8 @@ use LINE\LINEBot\MessageBuilder;
 
 use LINE\LINEBot\Event\BaseEvent;
 
+use Log;
+
 class LineBotService
 {
 	private $lineBot;
@@ -34,6 +36,8 @@ class LineBotService
 
     public function replyMessage($content): Response
     {
+        Log::channel('debug')->info($content);
+        
         if(count($content) > 5){
         	$content = new TextMessageBuilder($content);
         }else{
@@ -44,8 +48,11 @@ class LineBotService
 
         $replyToken = $event->getReplyToken();
 
+        Log::channel('debug')->info($replyToken);
+
+
         return $this->lineBot->replyMessage($replyToken, $content);
-        // return $this->lineBot->replyText($replyToken, $content);
+
     }
 
 
