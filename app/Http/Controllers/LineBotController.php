@@ -20,9 +20,8 @@ class LineBotController extends Controller
 
     public function handle(Request $request)
     {
-    	Log::channel('debug')->info($request->toArray());
 
-    	$this->linebotservice->replyMessage($request->message);
+    	$this->linebotservice->replyMessage($request);
     	// $this->linebotservice->pushMessage($request->message);
     }
 
