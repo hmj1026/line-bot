@@ -37,18 +37,20 @@ class LineBotService
     public function replyMessage($request)
     {
 
-        foreach ($request->events as $event) {
+        // foreach ($request->events as $event) {
 
-            Log::channel('debug')->info($event->toArray());
-            Log::channel('debug')->info($event);
+        //     Log::channel('debug')->info($event->toArray());
+        //     Log::channel('debug')->info($event);
 
-            $replyToken = $event->replyToken;
-            $content = $event->message->text;
-        }
+        //     $replyToken = $event->replyToken;
+        //     $content = $event->message->text;
+        // }
+
+        $replyToken = $request->events[0]->replyToken;
+
 
         Log::channel('debug')->info($replyToken);
-        Log::channel('debug')->info($content);
-        Log::channel('debug')->info($request->events->toArray());
+        // Log::channel('debug')->info($content);
 
         if(count($content) > 5){
         	$content = new TextMessageBuilder($content);
