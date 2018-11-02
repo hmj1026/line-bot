@@ -3,12 +3,16 @@ namespace App\Services;
 
 use LINE\LINEBot;
 use LINE\LINEBot\Response;
-// use LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
-// use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
-// use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuilder;
-// use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselTemplateBuilder;
-// use LINE\LINEBot\MessageBuilder;
+use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselTemplateBuilder;
+use LINE\LINEBot\MessageBuilder;
+
+use LINE\LINEBot\Event\BaseEvent;
+
+use Log;
 
 class LineBotService
 {
@@ -19,6 +23,7 @@ class LineBotService
 	{
 		$this->lineBot = app(LineBot::class);
 		$this->lineUserID = $lineUserID;
+
 	}
 
     public function pushMessage($content): Response
@@ -27,6 +32,25 @@ class LineBotService
             $content = new TextMessageBuilder($content);
         }
         return $this->lineBot->pushMessage($this->lineUserID, $content);
+    }
+
+    public function replyMessage($request)
+    {
+
+        $arr = $request->toArray();
+
+        $replyToken = $arr['events'][0]['replyToken'];
+        $content    = $arr['events'][0]['message']['text'];
+
+        if(strlen($content) > 5){
+        	$content = new TextMessageBuilder($content);
+        }else{
+        	$content = new TextMessageBuilder('Yeeeeeeeeeeee');
+        }
+
+
+        return $this->lineBot->replyMessage($replyToken, $content);
+
     }
 
 

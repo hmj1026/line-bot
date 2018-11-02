@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\LineBotService;
 
+
+use Log;
+
 class LineBotController extends Controller
 {
     private $linebotservice;
@@ -12,6 +15,7 @@ class LineBotController extends Controller
     public function __construct(LineBotService $linebotservice)
     {
     	$this->linebotservice = $linebotservice;
+
     }
 
     public function index()
@@ -21,7 +25,8 @@ class LineBotController extends Controller
 
     public function handle(Request $request)
     {
-    	$this->linebotservice->pushMessage('Test from laravel.');
-    }
 
+    	$this->linebotservice->replyMessage($request);
+    	// $this->linebotservice->pushMessage($request->message);
+    }
 }
