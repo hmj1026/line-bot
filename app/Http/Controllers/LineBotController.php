@@ -18,14 +18,15 @@ class LineBotController extends Controller
 
     }
 
+    public function index()
+    {
+    	return view('welcome');
+    }
+
     public function handle(Request $request)
     {
-
 
     	$this->linebotservice->replyMessage($request);
     	// $this->linebotservice->pushMessage($request->message);
     }
-
-
-    
 }
